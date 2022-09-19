@@ -1,6 +1,6 @@
 """Module for computing border arrays."""
 
-
+# Model for how loop works
 # def findBorder(ba, i, char, x):
 #     if i==0:
 #         ba.append(0)
@@ -62,11 +62,11 @@ def strict_border_array(x: str) -> list[int]:
     ba = border_array(x)
     bax = []
 
-    n = len(x)
+    lastIndex = len(x)-1
     for i, bai in enumerate(ba):
         if bai == 0:
             bax.append(0)
-        elif i+1 == n or x[i+1] != x[bai]:
+        elif i == lastIndex or x[i+1] != x[bai]:
             bax.append(bai)
         else:
             bax.append(bax[bai-1])        
