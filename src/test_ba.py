@@ -61,3 +61,13 @@ def test_strict_border_array() -> None:
         ba = strict_border_array(x)
         for i, b in enumerate(ba):
             check_is_strict_border(x, b, i)
+
+def test_custom():
+    x = "aaca"
+    assert strict_border_array(x) == [0, 1, 0, 1], "aaca not correct"
+    x = "aacaabaacaa"
+    assert strict_border_array(x) == [0, 1, 0, 0, 2,0,0,1,0,0,5], "aacaabaacaa not correct"
+    x = "aaaaaab"
+    assert strict_border_array(x) == [0, 0, 0, 0, 0, 5, 0], "aaaaaab not correct"
+    x = "aaaabaaa"
+    assert strict_border_array(x) == [0, 0, 0, 3, 0, 0, 0, 3], "aaaabaaa not correct"
