@@ -77,9 +77,9 @@ def strict_border_array(x: str) -> list[int]:
 
     # Shorter version: Less space and faster
     ba = border_array(x)
-    for i, bai in enumerate(ba[1:-1]):
-        if bai != 0 and x[i+2] == x[bai]:
-            ba[i+1]= ba[bai-1]  
+    for i, bai in enumerate(ba[:-1]):
+        if bai != 0 and x[i+1] == x[bai]:
+            ba[i]= ba[bai-1]  
     return ba
 
 
