@@ -59,21 +59,42 @@ def strict_border_array(x: str) -> list[int]:
     []
     """
     
-    ba = border_array(x)
-    bax = []
+    # Original code
 
-    lastIndex = len(x)-1
-    for i, bai in enumerate(ba):
-        if bai == 0:
-            bax.append(0)
-        elif i == lastIndex or x[i+1] != x[bai]:
-            bax.append(bai)
-        else:
-            bax.append(bax[bai-1])        
-    return bax
+    # ba = border_array(x)
+    # bax = []
+
+    # lastIndex = len(x)-1
+    # for i, bai in enumerate(ba):
+    #     if bai == 0:
+    #         bax.append(0)
+    #     elif i == lastIndex or x[i+1] != x[bai]:
+    #         bax.append(bai)
+    #     else:
+    #         bax.append(bax[bai-1])        
+    # return bax
+    
+
+    # Shorter version: Less space and faster
+    ba = border_array(x)
+    for i, bai in enumerate(ba[1:-1]):
+        if bai != 0 and x[i+2] == x[bai]:
+            ba[i+1]= ba[bai-1]  
+    return ba
+
+
+
+
+
+
+
+
+
+
+
 
 
 def reverse_border_array(x: str):
-    return border_array(x[::-1])
+    return border_array(x[::-1])[::-1]
 
 
